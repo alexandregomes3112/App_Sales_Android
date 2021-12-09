@@ -1,0 +1,70 @@
+<AdjustPage>:
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'icones/bg.png'
+        Label:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao_fino.png'
+            pos_hint: {'right':0.85, 'top': 0.95}
+            size_hint: 0.7, 0.2
+            bold: True
+            text: 'Unique ID: 1'
+            id: id_salesman
+
+        # change profile picture
+        ImageButton:
+            pos_hint: {'right':0.5, 'top': 0.7}
+            size_hint: 0.5, 0.15
+            source: 'icones/foto_perfil.PNG'
+            on_release: app.change_screen('photoprofilepage')
+        LabelButton:
+            pos_hint: {'right':0.9, 'top': 0.7}
+            size_hint: 0.5, 0.15
+            text: 'Change Profile Picture'
+            on_release: app.change_screen('photoprofilepage')
+
+        # add salesman
+        ImageButton:
+            pos_hint: {'right':0.5, 'top': 0.55}
+            size_hint: 0.5, 0.15
+            source: 'icones/adicionar_vendedor.png'
+            on_release: app.change_screen('addsalesmanpage')
+        LabelButton:
+            pos_hint: {'right':0.9, 'top': 0.55}
+            size_hint: 0.5, 0.15
+            text: 'Follow Salesman'
+            on_release: app.change_screen('addsalesmanpage')
+
+        # show sales results
+        ImageButton:
+            pos_hint: {'right':0.5, 'top': 0.40}
+            size_hint: 0.5, 0.15
+            source: 'icones/vendas_empresa.png'
+            on_release: app.load_all_sales()
+        LabelButton:
+            pos_hint: {'right':0.9, 'top': 0.40}
+            size_hint: 0.5, 0.15
+            text: 'Show Sales Results'
+            on_release: app.load_all_sales()
+
+        # home button
+        FloatLayout:
+            pos_hint: {'right':1, 'top': 0.12}
+            size_hint: 1, 0.12
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex('#0085FF')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            ImageButton:
+                pos_hint: {'right':0.2, 'top': 0.9}
+                size_hint: 0.2, 0.8
+                source: 'icones/voltar.png'
+                on_release: app.change_screen('homepage')

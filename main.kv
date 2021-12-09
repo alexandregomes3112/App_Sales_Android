@@ -1,0 +1,56 @@
+#:include kv/loginpage.kv
+#:include kv/homepage.kv
+#:include kv/adjustpage.kv
+#:include kv/addsalespage.kv
+#:include kv/addsalesmanpage.kv
+#:include kv/photoprofilepage.kv
+#:include kv/listsalespage.kv
+#:include kv/totalrevenuepage.kv
+#:include kv/salesothersalesman.kv
+#: import utils kivy.utils
+
+FloatLayout:
+    canvas:
+        Color:
+            rgb: utils.get_color_from_hex('#130330')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    Image:
+        pos_hint: {'right':1, 'top': 0.9}
+        size_hint: 1, 0.2
+        source: 'icones/seal.png'
+        id: photo_profile
+    ScreenManager:
+        pos_hint: {'right':1, 'top': 0.7}
+        size_hint: 1, 0.7
+        id: screen_manager
+        LoginPage:
+            name: "loginpage"
+            id: loginpage
+        HomePage:
+            name: "homepage"
+            id: homepage
+        AdjustPage:
+            name: 'adjustpage'
+            id: adjustpage
+        AddSalesPage:
+            name: 'addsalespage'
+            id: addsalespage
+        AddSalesmanPage:
+            name: 'addsalesmanpage'
+            id: addsalesmanpage
+        PhotoProfilePage:
+            name: 'photoprofilepage'
+            id: photoprofilepage
+        ListSalesPage:
+            name: 'listsalespage'
+            id: listsalespage
+        TotalRevenuePage:
+            name: 'totalrevenuepage'
+            id: totalrevenuepage
+        SalesOtherSalesman:
+            name: 'salesothersalesman'
+            id: salesothersalesman
+
+

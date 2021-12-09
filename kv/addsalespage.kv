@@ -1,0 +1,106 @@
+<AddSalesPage>:
+    FloatLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: 'icones/bg.png'
+        # select customer
+        Label:
+            pos_hint: {'right': 1, 'top': 1}
+            size_hint: 1, 0.05
+            text: 'Select the Customer'
+            id: label_select_customer
+        ScrollView:
+            pos_hint: {'right':1, 'top': 0.95}
+            size_hint: 1, 0.15
+            GridLayout:
+                rows: 1
+                id: sales_list
+                size_hint_x: None
+                height: self.minimum_width
+                col_default_width: '100dp'
+                col_force_default: True
+        # select product
+        Label:
+            pos_hint: {'right': 1, 'top': 0.75}
+            size_hint: 1, 0.05
+            text: 'Select the Product'
+            id: label_select_product
+        ScrollView:
+            pos_hint: {'right':1, 'top': 0.7}
+            size_hint: 1, 0.15
+            GridLayout:
+                rows: 1
+                id: product_list
+                size_hint_x: None
+                height: self.minimum_width
+                col_default_width: '100dp'
+                col_force_default: True
+        Label:
+            id: label_date
+            pos_hint: {'right':1, 'top': 0.5}
+            size_hint: 1, 0.05
+            bold: True
+            text: "Date: 01/01/2021"
+        # select unity
+        GridLayout:
+            rows: 1
+            pos_hint: {'right':0.9, 'top': 0.45}
+            size_hint: 0.8, 0.1
+            LabelButton:
+                text: "kg"
+                id: un_kg
+                on_release: app.select_und('un_kg')
+            LabelButton:
+                text: "unity"
+                id: un_un
+                on_release: app.select_und('un_un')
+            LabelButton:
+                text: "liters"
+                id: un_lt
+                on_release: app.select_und('un_lt')
+        # buttons
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao.png' if self.state == 'normal' else 'icones/botao_apertado.png'
+            on_release: app.change_screen("homepage")
+            text: 'Cancel'
+            pos_hint: {'right': 0.45, 'top': 0.2}
+            size_hint: 0.4, 0.2
+        LabelButton:
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source: 'icones/botao.png' if self.state == 'normal' else 'icones/botao_apertado.png'
+            on_release: app.add_sale()
+            text: 'Add Sale'
+            pos_hint: {'right': 0.95, 'top': 0.2}
+            size_hint: 0.4, 0.2
+
+        # Total price
+        GridLayout:
+            rows: 1
+            pos_hint: {'right':0.9, 'top': 0.355}
+            size_hint: 0.8, 0.075
+            Label:
+                text: "Total Price (R$)"
+                id: label_price
+            TextInput:
+                id: total_price
+                hint_text: "Type Numbers Only"
+        # Quantity
+        GridLayout:
+            rows: 1
+            pos_hint: {'right': 0.9, 'top': 0.275}
+            size_hint: 0.8, 0.075
+            Label:
+                text: "Total Qty"
+                id: label_qty
+            TextInput:
+                id: qty
+                hint_text: "0"
