@@ -3,6 +3,8 @@ from kivy.lang import Builder
 from screens import *
 from buttons import *
 import requests
+import os
+import certifi
 from bannersale import BannerSale
 import os
 from functools import partial
@@ -10,6 +12,7 @@ from myfirebase import MyFirebase
 from bannersalesman import BannerSalesman
 from datetime import date
 
+os.environ['SSL_CERTIFILE'] = certifi.where()
 
 GUI = Builder.load_file("main.kv")
 
